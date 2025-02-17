@@ -27,7 +27,7 @@ export const useChatStore = create<ChatState>((set) => ({
           ...msg,
           id: msg.id || msg._id,
         })),
-      }); // ✅ Ensure messages have `id`
+      });
     } catch (error) {
       console.error("Failed to fetch messages:", error);
       set({ messages: [] });
@@ -44,7 +44,7 @@ export const useChatStore = create<ChatState>((set) => ({
         messages: [
           ...state.messages,
           { ...response.data, id: response.data.id || response.data._id },
-        ], // ✅ Ensure `id` exists
+        ],
       }));
     } catch (error) {
       console.error("Failed to send message:", error);

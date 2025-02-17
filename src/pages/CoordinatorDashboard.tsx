@@ -15,8 +15,14 @@ import { Trash, Check, X } from "lucide-react";
 export const CoordinatorDashboard: React.FC = () => {
   const navigate = useNavigate();
   const { isAuthenticated, login, logout } = useAuthStore();
-  const { requests, fetchRequests, acceptRequest, rejectRequest } = useRoutineStore();
-  const { addNotification, fetchNotifications, notifications, deleteNotification } = useNotificationStore();
+  const { requests, fetchRequests, acceptRequest, rejectRequest } =
+    useRoutineStore();
+  const {
+    addNotification,
+    fetchNotifications,
+    notifications,
+    deleteNotification,
+  } = useNotificationStore();
 
   // Pagination state for schedule change requests
   const requestsPerPage = 6;
@@ -130,7 +136,11 @@ export const CoordinatorDashboard: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar title="Coordinator Dashboard" showLogout onLogout={handleLogout} />
+      <Navbar
+        title="Coordinator Dashboard"
+        showLogout
+        onLogout={handleLogout}
+      />
 
       <main className="flex-grow container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 gap-6">
@@ -209,19 +219,21 @@ export const CoordinatorDashboard: React.FC = () => {
             </div>
             {totalRequestPages > 1 && (
               <div className="flex justify-center space-x-2 mt-4">
-                {Array.from({ length: totalRequestPages }, (_, i) => i + 1).map((page) => (
-                  <button
-                    key={page}
-                    onClick={() => handleRequestPageChange(page)}
-                    className={`px-3 py-1 border rounded ${
-                      page === requestPage
-                        ? "bg-indigo-600 text-white"
-                        : "bg-white text-indigo-600 hover:bg-indigo-100"
-                    }`}
-                  >
-                    {page}
-                  </button>
-                ))}
+                {Array.from({ length: totalRequestPages }, (_, i) => i + 1).map(
+                  (page) => (
+                    <button
+                      key={page}
+                      onClick={() => handleRequestPageChange(page)}
+                      className={`px-3 py-1 border rounded ${
+                        page === requestPage
+                          ? "bg-indigo-600 text-white"
+                          : "bg-white text-indigo-600 hover:bg-indigo-100"
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  )
+                )}
               </div>
             )}
           </div>
@@ -262,7 +274,10 @@ export const CoordinatorDashboard: React.FC = () => {
                   </div>
                   {notif.sender === "Coordinator" && (
                     <button onClick={() => handleDeleteNotification(notif.id)}>
-                      <Trash size={18} className="text-red-500 hover:text-red-700" />
+                      <Trash
+                        size={18}
+                        className="text-red-500 hover:text-red-700"
+                      />
                     </button>
                   )}
                 </div>
@@ -271,19 +286,21 @@ export const CoordinatorDashboard: React.FC = () => {
 
             {totalPages > 1 && (
               <div className="flex justify-center space-x-2 mt-4">
-                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                  <button
-                    key={page}
-                    onClick={() => handlePageChange(page)}
-                    className={`px-3 py-1 border rounded ${
-                      page === currentPage
-                        ? "bg-indigo-600 text-white"
-                        : "bg-white text-indigo-600 hover:bg-indigo-100"
-                    }`}
-                  >
-                    {page}
-                  </button>
-                ))}
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (page) => (
+                    <button
+                      key={page}
+                      onClick={() => handlePageChange(page)}
+                      className={`px-3 py-1 border rounded ${
+                        page === currentPage
+                          ? "bg-indigo-600 text-white"
+                          : "bg-white text-indigo-600 hover:bg-indigo-100"
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  )
+                )}
               </div>
             )}
           </div>

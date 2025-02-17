@@ -1,6 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { School } from 'lucide-react';
+import React from "react";
+import { Link } from "react-router-dom";
+import { School } from "lucide-react";
 
 interface NavbarProps {
   title: string;
@@ -8,7 +8,11 @@ interface NavbarProps {
   onLogout?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ title, showLogout, onLogout }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  title,
+  showLogout,
+  onLogout,
+}) => {
   return (
     <nav className="bg-indigo-600 text-white p-4">
       <div className="container mx-auto flex justify-between items-center">
@@ -21,10 +25,7 @@ export const Navbar: React.FC<NavbarProps> = ({ title, showLogout, onLogout }) =
             Home
           </Link>
           {showLogout && (
-            <button
-              onClick={onLogout}
-              className="hover:text-indigo-200"
-            >
+            <button onClick={onLogout} className="hover:text-indigo-200">
               Logout
             </button>
           )}

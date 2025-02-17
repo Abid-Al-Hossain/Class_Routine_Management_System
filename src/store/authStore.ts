@@ -1,4 +1,4 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
 interface AuthState {
   isAuthenticated: {
@@ -7,15 +7,18 @@ interface AuthState {
     student: boolean;
     representative: boolean;
   };
-  login: (role: keyof AuthState['isAuthenticated'], password: string) => boolean;
-  logout: (role: keyof AuthState['isAuthenticated']) => void;
+  login: (
+    role: keyof AuthState["isAuthenticated"],
+    password: string
+  ) => boolean;
+  logout: (role: keyof AuthState["isAuthenticated"]) => void;
 }
 
 const passwords = {
-  coordinator: '1234',
-  teacher: '2345',
-  student: '4567',
-  representative: '5678',
+  coordinator: "1234",
+  teacher: "2345",
+  student: "4567",
+  representative: "5678",
 };
 
 export const useAuthStore = create<AuthState>((set) => ({

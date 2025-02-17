@@ -13,7 +13,8 @@ import { Trash } from "lucide-react";
 export const StudentDashboard: React.FC = () => {
   const navigate = useNavigate();
   const { isAuthenticated, login, logout } = useAuthStore();
-  const { notifications, fetchNotifications, deleteNotification } = useNotificationStore();
+  const { notifications, fetchNotifications, deleteNotification } =
+    useNotificationStore();
   const [routine, setRoutine] = useState({});
 
   // Pagination state for notifications
@@ -93,7 +94,10 @@ export const StudentDashboard: React.FC = () => {
                 </div>
                 {notif.sender === "Student" && (
                   <button onClick={() => handleDeleteNotification(notif.id)}>
-                    <Trash size={18} className="text-red-500 hover:text-red-700" />
+                    <Trash
+                      size={18}
+                      className="text-red-500 hover:text-red-700"
+                    />
                   </button>
                 )}
               </div>
@@ -101,19 +105,21 @@ export const StudentDashboard: React.FC = () => {
           </div>
           {totalPages > 1 && (
             <div className="flex justify-center space-x-2 mt-4">
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <button
-                  key={page}
-                  onClick={() => handlePageChange(page)}
-                  className={`px-3 py-1 border rounded ${
-                    page === currentPage
-                      ? "bg-indigo-600 text-white"
-                      : "bg-white text-indigo-600 hover:bg-indigo-100"
-                  }`}
-                >
-                  {page}
-                </button>
-              ))}
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                (page) => (
+                  <button
+                    key={page}
+                    onClick={() => handlePageChange(page)}
+                    className={`px-3 py-1 border rounded ${
+                      page === currentPage
+                        ? "bg-indigo-600 text-white"
+                        : "bg-white text-indigo-600 hover:bg-indigo-100"
+                    }`}
+                  >
+                    {page}
+                  </button>
+                )
+              )}
             </div>
           )}
         </div>
@@ -123,4 +129,3 @@ export const StudentDashboard: React.FC = () => {
     </div>
   );
 };
-

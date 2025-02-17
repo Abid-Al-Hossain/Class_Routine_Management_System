@@ -83,15 +83,14 @@ export const ChatBox: React.FC<ChatBoxProps> = ({ username }) => {
                   >
                     <p className="text-sm font-bold">{msg.sender}</p>
                     <p>{msg.content}</p>
-                    {msg.sender === username &&
-                      msg.id && ( // ✅ Ensure `msg.id` exists before allowing deletion
-                        <button
-                          onClick={() => deleteMessage(msg.id, username)}
-                          className="text-xs text-gray-300 hover:text-white mt-1"
-                        >
-                          Delete
-                        </button>
-                      )}
+                    {msg.sender === username && msg.id && (
+                      <button
+                        onClick={() => deleteMessage(msg.id, username)}
+                        className="text-xs text-gray-300 hover:text-white mt-1"
+                      >
+                        Delete
+                      </button>
+                    )}
                   </div>
                 </div>
               ))}

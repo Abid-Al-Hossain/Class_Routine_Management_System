@@ -1,10 +1,10 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Home } from './pages/Home';
-import { CoordinatorDashboard } from './pages/CoordinatorDashboard';
-import { TeacherDashboard } from './pages/TeacherDashboard';
-import { StudentDashboard } from './pages/StudentDashboard';
-import { RepresentativeDashboard } from './pages/RepresentativeDashboard';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Home } from "./pages/Home";
+import { CoordinatorDashboard } from "./pages/CoordinatorDashboard";
+import { TeacherDashboard } from "./pages/TeacherDashboard";
+import { StudentDashboard } from "./pages/StudentDashboard";
+import { RepresentativeDashboard } from "./pages/RepresentativeDashboard";
 
 function App() {
   return (

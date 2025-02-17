@@ -22,10 +22,6 @@ mongoose
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 
-// ======================
-// Database Schemas
-// ======================
-
 // ✅ Routine Schema
 const routineSchema = new mongoose.Schema({
   day: String,
@@ -93,9 +89,6 @@ app.get("/api/routine", async (req, res) => {
   }
 });
 
-
-
-
 app.delete("/api/routine", async (req, res) => {
   try {
     await Routine.deleteMany({});
@@ -105,15 +98,12 @@ app.delete("/api/routine", async (req, res) => {
   }
 });
 
-
-
-
 app.get("/api/chat", async (req, res) => {
   try {
     const messages = await Chat.find().sort({ timestamp: 1 });
     res.status(200).json(
       messages.map((msg) => ({
-        id: msg._id, // ✅ Ensure `_id` is mapped to `id`
+        id: msg._id,
         sender: msg.sender,
         content: msg.content,
         timestamp: msg.timestamp,
@@ -130,7 +120,7 @@ app.post("/api/chat", async (req, res) => {
     const newMessage = new Chat({ sender, content });
     await newMessage.save();
     res.status(200).json({
-      id: newMessage._id, // ✅ Return `id`
+      id: newMessage._id,
       sender: newMessage.sender,
       content: newMessage.content,
       timestamp: newMessage.timestamp,
@@ -163,12 +153,6 @@ app.delete("/api/chat/:id", async (req, res) => {
   }
 });
 
-
-
-
-
-
-
 // ✅ Add Notification Schema
 const notificationSchema = new mongoose.Schema({
   sender: String,
@@ -195,7 +179,7 @@ app.post("/api/notifications", async (req, res) => {
     const newNotification = new Notification({ sender, content });
     await newNotification.save();
     res.status(200).json({
-      id: newNotification._id, // ✅ Explicitly return `id`
+      id: newNotification._id,
       sender: newNotification.sender,
       content: newNotification.content,
       timestamp: newNotification.timestamp,
@@ -215,18 +199,14 @@ app.delete("/api/notifications/:id", async (req, res) => {
   }
 });
 
-
-
-
 const requestSchema = new mongoose.Schema({
   teacherName: String,
   content: String,
   timestamp: { type: Date, default: Date.now },
-  acceptStatus: { type: String, default: "pending" } // New field
+  acceptStatus: { type: String, default: "pending" },
 });
 
 const Request = mongoose.model("Request", requestSchema);
-
 
 // ✅ Route to Fetch All Schedule Change Requests
 app.get("/api/requests", async (req, res) => {
@@ -250,8 +230,6 @@ app.post("/api/requests", async (req, res) => {
   }
 });
 
-
-
 app.put("/api/requests/:id/accept", async (req, res) => {
   try {
     const { id } = req.params;
@@ -261,7 +239,6 @@ app.put("/api/requests/:id/accept", async (req, res) => {
     res.status(500).json({ error: "Failed to accept request" });
   }
 });
-
 
 app.put("/api/requests/:id/reject", async (req, res) => {
   try {
@@ -273,8 +250,6 @@ app.put("/api/requests/:id/reject", async (req, res) => {
   }
 });
 
-
-
 app.delete("/api/requests/:id", async (req, res) => {
   try {
     const { id } = req.params;
@@ -285,16 +260,6 @@ app.delete("/api/requests/:id", async (req, res) => {
   }
 });
 
-
-
-
-
-
-
-
-
-
-// ✅ Start Server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });

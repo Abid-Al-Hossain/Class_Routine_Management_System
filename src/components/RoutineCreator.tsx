@@ -99,7 +99,7 @@ export const RoutineCreator: React.FC<{
       });
       if (response.status === 200) {
         alert("Routine saved successfully!");
-        onSave(selectedDay, routine); // Update parent component's state
+        onSave(selectedDay, routine);
       }
     } catch (error) {
       console.error("Failed to save routine:", error);
@@ -115,7 +115,7 @@ export const RoutineCreator: React.FC<{
         </label>
         <select
           value={selectedDay}
-          onChange={(e) => onDayChange(e.target.value)} // Update selected day without saving
+          onChange={(e) => onDayChange(e.target.value)}
           className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"
         >
           {days.map((day) => (
